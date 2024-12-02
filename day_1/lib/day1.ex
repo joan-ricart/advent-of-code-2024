@@ -51,8 +51,13 @@ defmodule Day1 do
       end)
       |> Enum.map(&Enum.sort/1)
 
-    Enum.each(first, fn item -> nil end)
+    result =
+      Enum.map(first, fn item ->
+        count = Enum.filter(second, fn second_item -> second_item == item end) |> length()
+        item * count
+      end)
+      |> Enum.sum()
 
-    IO.inspect(result)
+    IO.puts(result)
   end
 end
